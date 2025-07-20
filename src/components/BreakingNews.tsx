@@ -9,7 +9,7 @@ interface NewsItem {
 
 export const BreakingNews: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'ALL SPORTS' | 'SPORT A'>('ALL SPORTS');
-  const [currentNews, setCurrentNews] = useState<NewsItem[]>([
+  const [currentNews] = useState<NewsItem[]>([
     { id: 1, category: 'SPORTS', headline: 'Championship finals begin tonight', priority: 'high' },
     { id: 2, category: 'SPORT A', headline: 'Record broken in qualifying rounds', priority: 'medium' },
     { id: 3, category: 'SPORTS', headline: 'Weather conditions optimal for event', priority: 'low' },

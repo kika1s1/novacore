@@ -8,7 +8,7 @@ interface PanelProps {
 
 const Panel: React.FC<PanelProps> = ({ children, className = '', contentClassName = '' }) => {
   return (
-    <div className={`hud-panel box-glow-red backdrop-blur-sm ${className}`}>
+    <div className={`hud-panel  box-glow-red backdrop-blur-sm ${className}`}>
       <div className={`relative w-full h-full content-wrapper ${contentClassName}`}>
         {children}
       </div>

@@ -4,40 +4,70 @@
   --neon-red: #ff1111;
   --bg-dark: #050509;
   --frame-color: #a30000;
+  --holo-red: #ff0040;
+  --holo-cyan: #00d4ff;
 }
+
 html {
     overflow: scroll;
     overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
     width: 0;  
     background: transparent; 
 }
+
 ::-webkit-scrollbar-thumb {
     background: transparent; 
 }
+
 body {
   font-family: "Orbitron", sans-serif;
-  background-color: #0a0000; /* deep black-red base */
-  background-image: radial-gradient(circle at center, rgba(255, 0, 0, 0.1) 0%, transparent 60%),
-                    radial-gradient(circle at top left, rgba(255, 0, 0, 0.06), transparent 70%),
-                    radial-gradient(circle at bottom right, rgba(255, 0, 0, 0.06), transparent 70%);
-  background-blend-mode: screen;
+  background: #000000;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 64, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 64, 0.05) 0%, transparent 70%);
   color: white;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
-/* Custom glow effects */
+/* Enhanced glow effects */
 .text-glow-red {
-  text-shadow: 0 0 5px rgba(255, 82, 82, 0.7), 0 0 10px rgba(255, 82, 82, 0.5);
+  text-shadow: 
+    0 0 5px var(--holo-red), 
+    0 0 10px var(--holo-red), 
+    0 0 15px var(--holo-red),
+    0 0 20px rgba(255, 0, 64, 0.5);
 }
+
 .text-glow-cyan {
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.6);
+  text-shadow: 
+    0 0 5px var(--holo-cyan), 
+    0 0 10px var(--holo-cyan), 
+    0 0 15px var(--holo-cyan),
+    0 0 20px rgba(0, 212, 255, 0.5);
 }
+
 .box-glow-red {
-  box-shadow: 0 0 3px rgba(255, 82, 82, 0.5), 0 0 7px rgba(255, 82, 82, 0.3),
-    inset 0 0 2px rgba(255, 82, 82, 0.3);
+  box-shadow: 
+    0 0 5px rgba(255, 0, 64, 0.6),
+    0 0 10px rgba(255, 0, 64, 0.4),
+    0 0 15px rgba(255, 0, 64, 0.2),
+    inset 0 0 5px rgba(255, 0, 64, 0.1);
+}
+
+.holographic-border {
+  position: relative;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 64, 0.6);
+  box-shadow: 
+    0 0 10px rgba(255, 0, 64, 0.3),
+    inset 0 0 10px rgba(255, 0, 64, 0.1);
 }
 
 /* Custom decorative corners using pseudo-elements */
@@ -109,4 +139,194 @@ body {
 }
 .animate-pulse-light {
   animation: pulse-light 3s ease-in-out infinite;
+}
+/* Advanced holographic animations */
+@keyframes hologram-flicker {
+  0%, 100% { opacity: 1; }
+  2% { opacity: 0.8; }
+  4% { opacity: 1; }
+  8% { opacity: 0.9; }
+  10% { opacity: 1; }
+  12% { opacity: 0.7; }
+  14% { opacity: 1; }
+}
+
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { transform: rotate(360deg); opacity: 0.8; }
+}
+
+@keyframes data-stream {
+  0% { transform: translateY(100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes core-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 40px rgba(255, 0, 64, 0.8);
+  }
+}
+
+@keyframes globe-rotate {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes typing-cursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Enhanced panel styles */
+.nova-panel {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 0, 0, 0.8) 100%);
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, rgba(255, 0, 64, 0.8), rgba(255, 0, 64, 0.3), rgba(255, 0, 64, 0.8)) 1;
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 64, 0.3),
+    inset 0 0 20px rgba(255, 0, 64, 0.05);
+  animation: hologram-flicker 8s infinite;
+}
+
+.nova-panel::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(255, 0, 64, 0.6) 0%, 
+    transparent 25%, 
+    transparent 75%, 
+    rgba(255, 0, 64, 0.6) 100%);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* Stark-style corner brackets */
+.stark-corners::before,
+.stark-corners::after,
+.stark-corners .content-wrapper::before,
+.stark-corners .content-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--holo-red);
+  z-index: 10;
+}
+
+.stark-corners::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+  box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+}
+
+.stark-corners::after {
+  top: -2px;
+  right: -2px;
+  border-left: none;
+  border-bottom: none;
+  box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+}
+
+.stark-corners .content-wrapper::before {
+  bottom: -2px;
+  left: -2px;
+  border-right: none;
+  border-top: none;
+  box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+}
+
+.stark-corners .content-wrapper::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+  box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+}
+
+/* Core radar animation */
+.core-radar {
+  animation: core-pulse 3s ease-in-out infinite;
+}
+
+/* Data stream effects */
+.data-stream {
+  animation: data-stream 2s linear infinite;
+}
+
+/* Holographic text effects */
+.holo-text {
+  background: linear-gradient(45deg, var(--holo-cyan), var(--holo-red), var(--holo-cyan));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hologram-flicker 6s infinite;
+}
+
+/* Terminal cursor */
+.terminal-cursor {
+  animation: typing-cursor 1s infinite;
+}
+
+/* Enhanced button styles */
+.nova-button {
+  background: linear-gradient(45deg, rgba(255, 0, 64, 0.1), rgba(255, 0, 64, 0.3));
+  border: 1px solid rgba(255, 0, 64, 0.6);
+  color: var(--holo-red);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 0, 64, 0.5);
+}
+
+.nova-button:hover {
+  background: linear-gradient(45deg, rgba(255, 0, 64, 0.3), rgba(255, 0, 64, 0.5));
+  box-shadow: 0 0 15px rgba(255, 0, 64, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Stock ticker animation */
+.stock-ticker {
+  position: relative;
+  overflow: hidden;
+}
+
+.stock-ticker::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  animation: data-stream 3s linear infinite;
+}
+
+/* Memory radar specific styles */
+.memory-radar {
+  filter: drop-shadow(0 0 10px var(--holo-cyan));
+}
+
+/* Globe hologram effect */
+.globe-container {
+  perspective: 1000px;
+}
+
+.globe-hologram {
+  transform-style: preserve-3d;
+  animation: globe-rotate 20s linear infinite;
 }

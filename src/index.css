@@ -30,10 +30,11 @@ body {
     radial-gradient(circle at 80% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(255, 0, 64, 0.05) 0%, transparent 70%);
   color: white;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 /* Enhanced glow effects */
 .text-glow-red {

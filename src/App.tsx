@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Panel from "./components/Panel";
-import ConnectingLines from "./components/ConnectingLines";
 import Globe from "./components/Globe";
-import { HudPanel } from "./components/HudPanel";
 import { Command } from "./components/Command";
 import { RadarCore } from "./components/RadarCore";
 import { StockTicker } from "./components/StockTicker";
@@ -38,7 +36,7 @@ const BreakingNewsPanel: React.FC = () => (
 //       <div className="space-y-2 text-xs sm:text-sm">
 //         <p className="text-cyan-300">&gt; what is the status?</p>
 //         <p className="text-cyan-300">&gt; All systems are operational</p>
-        
+
 //         <form className="flex-shrink-0 ">
 //           <div className="flex items-center bg-black/30 border-t">
 //             <span className="text-cyan-400 pl-2">&gt;</span>
@@ -90,13 +88,12 @@ export default function App() {
   }
 
   return (
-    <main className="text-red-400 min-h-screen p-2 sm:p-4 lg:p-6 flex items-center justify-center circuit-bg gpu-accelerated">
+    <main className="text-red-400 h-screen w-screen p-8 flex items-center justify-center circuit-bg gpu-accelerated">
       {/* Ambient fog overlay */}
       <div className="ambient-fog" />
-      
-      <div className="relative w-full max-w-7xl aspect-[16/10] parallax-layer">
-        <ConnectingLines />
-        <div className="relative z-10 grid grid-cols-12 grid-rows-12 gap-4 w-full h-full">
+
+      <div className="relative w-full h-full max-w-[85vw] max-h-[80vh] parallax-layer">
+        <div className="relative z-10 grid grid-cols-12 grid-rows-12 gap-3 w-full h-full">
           {/* Top Left Title */}
           <div className="col-start-1 col-span-4 row-start-1 row-span-1">
             <Panel
@@ -122,7 +119,7 @@ export default function App() {
               <Command />
             </Panel>
           </div>
-          
+
           <div className="col-start-1 col-span-2 row-start-9 row-span-3">
             <Panel
               variant="circular"
@@ -137,7 +134,7 @@ export default function App() {
           <div className="col-start-5 col-span-4 row-start-4 row-span-5 flex items-center justify-center">
             <RadarCore size="large" variant="core" animated={true} />
           </div>
-          
+
           <div className="col-start-4 col-span-4 row-start-10 row-span-2">
             <Panel
               variant="rectangular"

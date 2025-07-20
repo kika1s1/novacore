@@ -4,14 +4,15 @@ interface PanelProps {
   children: React.ReactNode;
   className?: string;
   contentClassName?: string;
-  variant?: 'default' | 'stark' | 'minimal';
+  variant?: 'default' | 'stark' | 'minimal' | "header" |"circular" | "rectangular" | "memory";
 }
 
 const Panel: React.FC<PanelProps> = ({ 
   children, 
   className = '', 
   contentClassName = '',
-  variant = 'stark'
+  variant = 'stark',
+
 }) => {
   const baseClasses = variant === 'stark' 
     ? 'nova-panel stark-corners' 

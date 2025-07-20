@@ -15,8 +15,8 @@ import { StartupSequence } from "./components/StartupSequence";
 
 // --- UI Panels --- //
 const NovaNewsPanel: React.FC = () => (
-  <Panel className="h-full" contentClassName="p-3">
-    <h2 className="text-sm sm:text-base uppercase tracking-widest text-cyan-400 text-glow-cyan mb-3 font-bold">
+  <Panel className="h-full panel-interactive holo-shimmer" contentClassName="p-3">
+    <h2 className="text-sm sm:text-base uppercase tracking-widest text-cyan-400 text-glow-cyan mb-3 font-bold holo-text">
       NOVANEWS
     </h2>
     <StockTicker />
@@ -24,7 +24,7 @@ const NovaNewsPanel: React.FC = () => (
 );
 
 const BreakingNewsPanel: React.FC = () => (
-  <Panel className="h-full" contentClassName="p-3">
+  <Panel className="h-full panel-interactive holo-shimmer" contentClassName="p-3">
     <BreakingNews />
   </Panel>
 );
@@ -56,23 +56,24 @@ const BreakingNewsPanel: React.FC = () => (
 // );
 const Memory: React.FC = () => (
   <Panel
-    className="h-full"
+    variant="memory"
+    className="h-full panel-interactive holo-shimmer"
     contentClassName="p-3"
   >
-    <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-500 text-glow-red tracking-widest">
+    <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-500 text-glow-red tracking-widest holo-text">
       MEMORY
     </span>
   </Panel>
 );
 
 const MemoryPanel: React.FC = () => (
-  <Panel className="h-full" contentClassName="p-3">
+  <Panel className="h-full panel-interactive holo-shimmer" contentClassName="p-3">
     <RadarCore size="large" variant="memory" animated={true} />
   </Panel>
 );
 
 const DaemonsPanel: React.FC = () => (
-  <Panel className="h-full" contentClassName="p-3">
+  <Panel className="h-full panel-interactive holo-shimmer" contentClassName="p-3">
     <DaemonMonitor />
   </Panel>
 );
@@ -89,17 +90,21 @@ export default function App() {
   }
 
   return (
-    <main className=" text-red-400 min-h-screen p-2 sm:p-4 lg:p-6 flex items-center justify-center">
-      <div className="relative w-full max-w-7xl aspect-[16/10]">
+    <main className="text-red-400 min-h-screen p-2 sm:p-4 lg:p-6 flex items-center justify-center circuit-bg gpu-accelerated">
+      {/* Ambient fog overlay */}
+      <div className="ambient-fog" />
+      
+      <div className="relative w-full max-w-7xl aspect-[16/10] parallax-layer">
         <ConnectingLines />
         <div className="relative z-10 grid grid-cols-12 grid-rows-12 gap-4 w-full h-full">
           {/* Top Left Title */}
           <div className="col-start-1 col-span-4 row-start-1 row-span-1">
             <Panel
-              className="h-full"
+              variant="header"
+              className="h-full panel-interactive holo-shimmer"
               contentClassName="flex items-center justify-start p-3"
             >
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-500 text-glow-red tracking-widest">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-500 text-glow-red tracking-widest holo-text">
                 NOVACORE
               </h1>
             </Panel>
@@ -113,24 +118,19 @@ export default function App() {
             <BreakingNewsPanel />
           </div>
           <div className="col-start-1 col-span-4 row-start-7 row-span-2">
-            {/* <CommandPanel /> */}
-            <Panel  className="h-full"
-              contentClassName="p-3">
+            <Panel className="h-full panel-interactive holo-shimmer" contentClassName="p-3">
               <Command />
             </Panel>
           </div>
-          {/* <div className="col-start-2 col-span-2 row-start-9 row-span-3">
-            <Panel className="h-full" contentClassName="p-3">
-              <RedRadarIcon />
-            </Panel>
-          </div> */}
+          
           <div className="col-start-1 col-span-2 row-start-9 row-span-3">
-            <HudPanel
-              title=""
-              clipPath="polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))"
+            <Panel
+              variant="circular"
+              className="h-full panel-interactive"
+              contentClassName="p-3 flex items-center justify-center"
             >
               <RadarCore size="medium" variant="scanner" animated={true} />
-            </HudPanel>
+            </Panel>
           </div>
 
           {/* Center Column */}
@@ -139,12 +139,13 @@ export default function App() {
           </div>
           
           <div className="col-start-4 col-span-4 row-start-10 row-span-2">
-            <HudPanel
-              title=""
-              clipPath="polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)"
+            <Panel
+              variant="rectangular"
+              className="h-full panel-interactive holo-shimmer"
+              contentClassName="p-3"
             >
               <WaveformDisplay type="signal" animated={true} />
-            </HudPanel>
+            </Panel>
           </div>
 
           {/* Right Column */}
@@ -158,8 +159,10 @@ export default function App() {
             <DaemonsPanel />
           </div>
           <div className="col-start-9 col-span-4 row-start-8 row-span-4">
-            <Panel className="h-full" contentClassName="p-3">
-              <Globe />
+            <Panel className="h-full panel-interactive holo-shimmer globe-container" contentClassName="p-3">
+              <div className="globe-cinematic">
+                <Globe />
+              </div>
             </Panel>
           </div>
         </div>

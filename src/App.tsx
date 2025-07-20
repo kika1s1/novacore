@@ -162,31 +162,31 @@ const BreakingNewsPanel: React.FC = () => (
   </Panel>
 );
 
-const CommandPanel: React.FC = () => (
-  <Panel className="h-full" contentClassName="p-3 overflow-y-auto">
-    <>
-      <h2 className="text-sm sm:text-base uppercase tracking-widest text-cyan-400 text-glow-cyan mb-3">
-        COMMAND
-      </h2>
-      <div className="space-y-2 text-xs sm:text-sm">
-        <p className="text-cyan-300">&gt; what is the status?</p>
-        <p className="text-cyan-300">&gt; All systems are operational</p>
+// const CommandPanel: React.FC = () => (
+//   <Panel className="h-full" contentClassName="p-3 overflow-y-auto">
+//     <>
+//       <h2 className="text-sm sm:text-base uppercase tracking-widest text-cyan-400 text-glow-cyan mb-3">
+//         COMMAND
+//       </h2>
+//       <div className="space-y-2 text-xs sm:text-sm">
+//         <p className="text-cyan-300">&gt; what is the status?</p>
+//         <p className="text-cyan-300">&gt; All systems are operational</p>
         
-        <form className="flex-shrink-0 ">
-          <div className="flex items-center bg-black/30 border-t">
-            <span className="text-cyan-400 pl-2">&gt;</span>
-            <input
-              type="text"
-              className="w-full bg-transparent p-2 text-cyan-300 focus:outline-none placeholder-cyan-700 caret-cyan-400"
-              placeholder="Enter command..."
-              autoFocus
-            />
-          </div>
-        </form>
-      </div>
-    </>
-  </Panel>
-);
+//         <form className="flex-shrink-0 ">
+//           <div className="flex items-center bg-black/30 border-t">
+//             <span className="text-cyan-400 pl-2">&gt;</span>
+//             <input
+//               type="text"
+//               className="w-full bg-transparent p-2 text-cyan-300 focus:outline-none placeholder-cyan-700 caret-cyan-400"
+//               placeholder="Enter command..."
+//               autoFocus
+//             />
+//           </div>
+//         </form>
+//       </div>
+//     </>
+//   </Panel>
+// );
 const Memory: React.FC = () => (
   <Panel
     className="h-full"

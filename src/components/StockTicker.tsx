@@ -5,7 +5,7 @@ interface StockTickerProps {
   stocks?: Stock[];
 }
 
-export const StockTicker: React.FC<StockTickerProps> = ({ stocks }) => {
+export const StockTicker: React.FC<StockTickerProps> = ({  }) => {
   const [currentStocks, setCurrentStocks] = useState<Stock[]>([
     { ticker: 'SRP 500', price: 4521.23, change: -0.66, changePercent: 4.16 },
     { ticker: 'META', price: 298.45, change: 3.11, changePercent: 0.52 },
@@ -41,7 +41,6 @@ export const StockTicker: React.FC<StockTickerProps> = ({ stocks }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const formatPrice = (price: number) => price.toFixed(2);
   const formatChange = (change: number) => (change >= 0 ? '+' : '') + change.toFixed(2);
   const formatPercent = (percent: number) => Math.abs(percent).toFixed(2) + '%';
 

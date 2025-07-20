@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface WaveformDisplayProps {
   type?: 'signal' | 'audio' | 'neural' | 'quantum';
@@ -10,8 +10,7 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
   animated = true 
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
-  const [dataPoints, setDataPoints] = useState<number[]>([]);
+  const animationRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -132,7 +131,6 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
     } else {
       // Static waveform
       const points = generateWaveData();
-      setDataPoints(points);
       
       const rect = canvas.getBoundingClientRect();
       const width = rect.width;

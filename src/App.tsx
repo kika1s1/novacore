@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Panel from "./components/Panel";
 import ConnectingLines from "./components/ConnectingLines";
 import Globe from "./components/Globe";
@@ -8,7 +8,7 @@ import { RadarCore } from "./components/RadarCore";
 import { StockTicker } from "./components/StockTicker";
 import { BreakingNews } from "./components/BreakingNews";
 import { DaemonMonitor } from "./components/DaemonMonitor";
-import { WaveformDisplay } from "./components/WaveformDisplay";
+import WaveformDisplay  from "./components/WaveformDisplay";
 import { StartupSequence } from "./components/StartupSequence";
 
 

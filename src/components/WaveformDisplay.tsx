@@ -1,17 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
+
+const SignalIcon: React.FC = () => (
+  <svg
+    viewBox="0 0 100 20"
+    className="w-full h-full text-cyan-400 opacity-10"
+    preserveAspectRatio="none"
+  >
+    <path
+      d="M0 10 Q 12.5 0, 25 10 T 50 10 T 75 10 T 100 10"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      fill="none"
+      opacity="0.8"
+      className="text-glow-cyan"
+    />
+  </svg>
+);
 interface WaveformDisplayProps {
   type?: 'signal' | 'audio' | 'neural' | 'quantum';
   animated?: boolean;
 }
 
-export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({ 
-  type = 'signal', 
-  animated = true 
+const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
+  type = 'signal',
+  animated = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
-  const [dataPoints, setDataPoints] = useState<number[]>([]);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -97,9 +113,9 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
 
       // Draw waveform
       ctx.strokeStyle = type === 'signal' ? '#00d4ff' : '#ff0040';
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 0.2;
       ctx.shadowColor = ctx.strokeStyle;
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 5;
       
       ctx.beginPath();
       
@@ -132,7 +148,6 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
     } else {
       // Static waveform
       const points = generateWaveData();
-      setDataPoints(points);
       
       const rect = canvas.getBoundingClientRect();
       const width = rect.width;
@@ -167,11 +182,8 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
 
   return (
     <div className="w-full h-full relative">
-      <canvas 
-        ref={canvasRef}
-        className="w-full h-full"
-        style={{ filter: 'drop-shadow(0 0 5px currentColor)' }}
-      />
+      <SignalIcon />
+
       
       {/* Grid overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -181,7 +193,7 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
               <path 
                 d="M 20 0 L 0 0 0 20" 
                 fill="none" 
-                stroke={type === 'signal' ? '#00d4ff' : '#ff0040'} 
+                stroke={type === 'signal' ? '#13d4fc' : '#ff0040'} 
                 strokeWidth="0.5"
               />
             </pattern>
@@ -190,19 +202,9 @@ export const WaveformDisplay: React.FC<WaveformDisplayProps> = ({
         </svg>
       </div>
       
-      {/* Status indicator */}
-      <div className="absolute top-2 right-2 text-xs">
-        <div className="flex items-center space-x-2">
-          <div 
-            className={`w-2 h-2 rounded-full ${
-              animated ? 'bg-green-500 animate-pulse' : 'bg-yellow-500'
-            }`}
-          />
-          <span className={`${type === 'signal' ? 'text-cyan-400' : 'text-red-400'} font-mono`}>
-            {type.toUpperCase()}
-          </span>
-        </div>
-      </div>
+     
     </div>
   );
 };
+
+export default WaveformDisplay;

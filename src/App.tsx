@@ -89,7 +89,7 @@ export default function App() {
   }
 
   return (
-    <main className=" text-red-400 min-h-screen p-2 sm:p-4 lg:p-6 flex items-center justify-center">
+    <main className=" text-red-400 min-h-screen overflow-hidden p-2 sm:p-4 lg:p-6 flex items-center justify-center">
       <div className="relative w-full max-w-7xl aspect-[16/10]">
         <ConnectingLines />
         <div className="relative z-10 grid grid-cols-12 grid-rows-12 gap-4 w-full h-full">
